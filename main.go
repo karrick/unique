@@ -13,7 +13,7 @@ var progname string
 func init() {
 	var err error
 	if progname, err = os.Executable(); err != nil {
-		progname = os.Argv[0]
+		progname = os.Args[0]
 	}
 	progname = filepath.Base(progname)
 }
