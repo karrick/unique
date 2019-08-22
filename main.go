@@ -8,7 +8,15 @@ import (
 	"path/filepath"
 )
 
-var progname = filepath.Base(os.Args[0])
+var progname string
+
+func init() {
+	var err error
+	if progname, err = os.Executable(); err != nil {
+		progname = os.Argv[0]
+	}
+	progname = filepath.Base(progname)
+}
 
 func main() {
 	h := fnv.New64a()
